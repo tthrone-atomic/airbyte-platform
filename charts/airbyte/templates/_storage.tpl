@@ -81,6 +81,14 @@ Returns S3 environment variables.
       key: AWS_DEFAULT_REGION
 {{- end }}
 {{- end}}
+{{- if .Values.global.storage.s3.endpoint }}
+- name: AWS_ENDPOINT_URL 
+  valueFrom:
+    configMapKeyRef:
+      name: {{ .Release.Name }}-airbyte-env
+      key: AWS_ENDPOINT_URL
+{{- end }}
+{{- end}}
 
 {{/*
 Returns S3 secrets
